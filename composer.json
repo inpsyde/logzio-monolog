@@ -1,0 +1,42 @@
+{
+  "name": "inpsyde/logzio-monolog",
+  "description": "Logz.io integration for Monolog",
+  "keywords": [
+    "log",
+    "logging",
+    "monolog"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Christian Brückner",
+      "email": "chris@chrico.info",
+      "homepage": "https://www.chrico.info",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "monolog/monolog": "^1.23"
+  },
+  "require-dev": {
+    "php": ">=7",
+    "phpunit/phpunit": "6.3.*",
+    "inpsyde/php-coding-standards": "^0.8"
+  },
+  "autoload": {
+    "psr-4": {
+      "Inpsyde\\LogzIoMonolog\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Inpsyde\\LogzIoMonolog\\": "src/",
+      "Inpsyde\\LogzIoMonolog\\Tests\\Unit\\": "tests/phpunit/"
+    }
+  },
+  "suggest": {
+    "inpsyde/wonolog": "When using WordPress, you should also consider using Wonolog, a Monolog-based logging package for WordPress."
+  }
+}
