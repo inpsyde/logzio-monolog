@@ -81,9 +81,9 @@ final class LogzIoHandler extends AbstractProcessingHandler
     }
 
     /**
-     * @param array $data
+     * @param string $data
      */
-    protected function send(array $data)
+    protected function send(string $data)
     {
         $headers  = ['Content-Type: application/json'];
         $resource = curl_init();
