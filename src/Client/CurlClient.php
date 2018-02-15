@@ -12,16 +12,6 @@ class CurlClient implements ClientInterface
      */
     protected $endpoint;
 
-    /**
-     * @var array
-     */
-    protected $context;
-
-    /**
-     * @var int
-     */
-    protected $connectTimeout = 30;
-
     public function __construct(string $endpoint)
     {
         $this->endpoint = $endpoint;
