@@ -29,13 +29,13 @@ This repository will be depracted when our pull request is accepted and merged.
 
 use Monolog\Logger;
 use Inpsyde\LogzIoMonolog\Handler\LogzIoHandler;
-use Inpsyde\LogzIoMonolog\Transport\HttpTransport;
+use Inpsyde\LogzIoMonolog\Transport\HttpsTransport;
 
 $token = '<your-token>';
 
 // create a log channel
 $log = new Logger('name');
-$log->pushHandler(new LogzIoHandler(new HttpTransport($token)));
+$log->pushHandler(new LogzIoHandler(new HttpsTransport($token)));
 
 // add records to the log
 $log->warning('Foo');

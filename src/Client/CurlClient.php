@@ -14,6 +14,11 @@ class CurlClient implements ClientInterface
 
     public function __construct(string $endpoint)
     {
+
+        if (!extension_loaded('curl')) {
+            throw new \LogicException(sprintf('The curl extension is needed to use the %', __CLASS__));
+        }
+
         $this->endpoint = $endpoint;
     }
 
