@@ -35,8 +35,5 @@
       "Inpsyde\\LogzIoMonolog\\": "src/",
       "Inpsyde\\LogzIoMonolog\\Tests\\Unit\\": "tests/phpunit/"
     }
-  },
-  "suggest": {
-    "inpsyde/wonolog": "When using WordPress, you should also consider using Wonolog, a Monolog-based logging package for WordPress."
   }
 }
