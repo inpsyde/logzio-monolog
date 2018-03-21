@@ -29,7 +29,6 @@ This repository will be deprecated when our pull request is accepted and merged.
 
 use Monolog\Logger;
 use Inpsyde\LogzIoMonolog\Handler\LogzIoHandler;
-use Inpsyde\LogzIoMonolog\Transport\HttpsTransport;
 
 // create a log channel
 $log = new Logger('name');
