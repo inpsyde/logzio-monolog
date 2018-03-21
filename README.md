@@ -20,7 +20,7 @@ $ composer require inpsyde/logzio-monolog
 
 There is already a [pull request #1009](https://github.com/Seldaek/monolog/pull/1009) since 06/2017 which get's no feedback from Monolog contributors. Since we still want to use Logz.io with Monolog, we decided to exclude this pull request into an own repository for easier usage.
 
-This repository will be depracted when our pull request is accepted and merged.
+This repository will be deprecated when our pull request is accepted and merged.
 
 ## Basic Usage
 
@@ -31,11 +31,9 @@ use Monolog\Logger;
 use Inpsyde\LogzIoMonolog\Handler\LogzIoHandler;
 use Inpsyde\LogzIoMonolog\Transport\HttpsTransport;
 
-$token = '<your-token>';
-
 // create a log channel
 $log = new Logger('name');
-$log->pushHandler(new LogzIoHandler(new HttpsTransport($token)));
+$log->pushHandler(new LogzIoHandler('<your-token>'));
 
 // add records to the log
 $log->warning('Foo');
