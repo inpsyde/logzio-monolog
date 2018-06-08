@@ -16,12 +16,6 @@ Install the latest version with
 $ composer require inpsyde/logzio-monolog
 ```
 
-## Why is this an extra package?
-
-There is already a [pull request #1009](https://github.com/Seldaek/monolog/pull/1009) since 06/2017 which get's no feedback from Monolog contributors. Since we still want to use Logz.io with Monolog, we decided to exclude this pull request into an own repository for easier usage.
-
-This repository will be deprecated when our pull request is accepted and merged.
-
 ## Basic Usage
 
 ```php
