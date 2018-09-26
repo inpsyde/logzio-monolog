@@ -37,9 +37,9 @@ class LogzIoFormatter extends JsonFormatter
      */
     public function format(array $record): string
     {
-        if (isset($record[ "datetime" ]) && ($record[ "datetime" ] instanceof \DateTimeInterface)) {
-            $record[ "@timestamp" ] = $record[ "datetime" ]->format(self::DATETIME_FORMAT);
-            unset($record[ "datetime" ]);
+        if (isset($record["datetime"]) && ($record["datetime"] instanceof \DateTimeInterface)) {
+            $record["@timestamp"] = $record["datetime"]->format(self::DATETIME_FORMAT);
+            unset($record["datetime"]);
         }
 
         return parent::format($record);
