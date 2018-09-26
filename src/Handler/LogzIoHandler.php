@@ -2,6 +2,7 @@
 
 namespace Inpsyde\LogzIoMonolog\Handler;
 
+use Inpsyde\LogzIoMonolog\Exception\DomainException;
 use Inpsyde\LogzIoMonolog\Formatter\LogzIoFormatter;
 use Monolog\Formatter\FormatterInterface;
 use Monolog\Handler\AbstractProcessingHandler;
@@ -65,6 +66,9 @@ final class LogzIoHandler extends AbstractProcessingHandler
 
     protected function write(array $record)
     {
+        if (! array_key_exists('formatted', $record) || ! is_string($record['formatted'])) {
+            throw new DomainException("The record needs to be formatted as string");
+        }
         $this->send($record["formatted"]);
     }
 
