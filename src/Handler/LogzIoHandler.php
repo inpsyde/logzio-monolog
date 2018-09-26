@@ -47,9 +47,6 @@ final class LogzIoHandler extends AbstractProcessingHandler
         bool $bubble = true
     ) {
 
-        if (! extension_loaded('curl')) {
-            throw new \LogicException('The curl extension is needed to use the LogzIoHandler');
-        }
         $this->token = $token;
         $this->type = $type;
         $this->endpoint = $useSSL

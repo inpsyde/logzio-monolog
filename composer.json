@@ -18,7 +18,8 @@
   ],
   "require": {
     "php": ">=7.0",
-    "monolog/monolog": "^1.23"
+    "monolog/monolog": "^1.23",
+    "ext-curl": "*"
   },
   "require-dev": {
     "php": ">=7",
