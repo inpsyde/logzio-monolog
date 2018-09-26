@@ -45,7 +45,7 @@ final class LogzIoHandler extends AbstractProcessingHandler
         string $token,
         string $type = 'http-bulk',
         bool $useSsl = true,
-        $level = Logger::DEBUG,
+        int $level = Logger::DEBUG,
         bool $bubble = true
     ) {
         $this->token = $token;
@@ -68,7 +68,7 @@ final class LogzIoHandler extends AbstractProcessingHandler
         $this->send($record["formatted"]);
     }
 
-    protected function send($data)
+    protected function send(string $data)
     {
         $headers = ['Content-Type: application/json'];
         $ch = curl_init();
