@@ -19,12 +19,12 @@
   "require": {
     "php": ">=7.0",
     "monolog/monolog": "^1.23",
-    "ext-curl": "*"
+    "ext-curl": "*",
+    "inpsyde/php-coding-standards": "@stable"
   },
   "require-dev": {
     "php": ">=7",
-    "phpunit/phpunit": "6.3.*",
-    "inpsyde/php-coding-standards": "^0.8"
+    "phpunit/phpunit": "6.3.*"
   },
   "autoload": {
     "psr-4": {
