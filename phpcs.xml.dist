@@ -1,5 +1,10 @@
 <?xml version="1.0"?>
 <ruleset name="Inpsyde Logz.io Monolog integration">
     <file>./src</file>
-    <rule ref="Inpsyde"/>
+    <rule ref="Inpsyde">
+        <!-- PHPStorm is right now not able to do reformat this properly -->
+        <exclude name="Inpsyde.CodeQuality.FunctionBodyStart.WrongForMultiLineDeclaration" />
+        <!-- $ch is a common variable name for curl handler resource -->
+        <exclude name="Inpsyde.CodeQuality.ElementNameMinimalLength.TooShort" />
+    </rule>
 </ruleset>
