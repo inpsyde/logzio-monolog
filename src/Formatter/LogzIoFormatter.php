@@ -42,6 +42,15 @@ class LogzIoFormatter extends JsonFormatter
             unset($record[ "datetime" ]);
         }
 
+        // Logz.io does not allow [null] or [""] as context/extra.
+        if(isset($record['context'])){
+            $record['context'] = array_filter((array)$record['context']);
+        }
+
+        if(isset($record['extra'])){
+            $record['extra'] = array_filter((array)$record['extra']);
+        }
+
         return parent::format($record);
     }
 }
