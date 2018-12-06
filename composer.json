@@ -17,9 +17,9 @@
     }
   ],
   "require": {
-    "php": ">=7.0",
-    "monolog/monolog": "^1.23",
-    "ext-curl": "*"
+    "php": "^7.0",
+    "ext-curl": "*",
+    "monolog/monolog": "^1.23"
   },
   "require-dev": {
     "php": ">=7",
