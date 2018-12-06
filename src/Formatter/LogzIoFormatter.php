@@ -19,6 +19,9 @@ class LogzIoFormatter extends JsonFormatter
 
     /**
      * Overrides the default batch mode to new lines for compatibility with the Logz.io bulk API.
+     *
+     * @param int  $batchMode
+     * @param bool $appendNewline
      */
     public function __construct(int $batchMode = self::BATCH_MODE_NEWLINES, bool $appendNewline = true)
     {
