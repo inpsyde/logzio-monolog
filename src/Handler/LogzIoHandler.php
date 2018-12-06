@@ -11,8 +11,8 @@ use Monolog\Logger;
 /**
  * @author Christian Brückner <chris@chrico.info>
  *
- * @see    https://support.logz.io/hc/en-us/categories/201158705-Log-Shipping
- * @see    https://app.logz.io/#/dashboard/data-sources/Bulk-HTTPS
+ * @link https://support.logz.io/hc/en-us/categories/201158705-Log-Shipping
+ * @link https://app.logz.io/#/dashboard/data-sources/Bulk-HTTPS
  */
 final class LogzIoHandler extends AbstractProcessingHandler
 {

@@ -30,7 +30,7 @@ class LogzIoFormatter extends JsonFormatter
      *
      * @param array $record
      *
-     * @see https://support.logz.io/hc/en-us/articles/210206885-How-can-I-get-Logz-io-to-read-the-timestamp-within-a-JSON-log-
+     * @link https://support.logz.io/hc/en-us/articles/210206885-How-can-I-get-Logz-io-to-read-the-timestamp-within-a-JSON-log-
      * @see \Monolog\Formatter\JsonFormatter::format()
      *
      * @return string
