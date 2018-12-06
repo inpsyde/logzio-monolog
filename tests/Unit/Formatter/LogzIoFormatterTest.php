@@ -24,8 +24,8 @@ class LogzIoFormatterTest extends TestCase
         $record            = $this->getRecord();
         $formatted_decoded = json_decode($formatter->format($record), true);
 
-        static::assertArrayNotHasKey("datetime", $formatted_decoded);
-        static::assertArrayHasKey("@timestamp", $formatted_decoded);
+        static::assertArrayNotHasKey('datetime', $formatted_decoded);
+        static::assertArrayHasKey('@timestamp', $formatted_decoded);
     }
 
 

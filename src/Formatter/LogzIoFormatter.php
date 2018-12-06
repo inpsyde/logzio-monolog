@@ -15,7 +15,7 @@ class LogzIoFormatter extends JsonFormatter
     /**
      * yyyy-MM-dd'T'HH:mm:ss.SSSZ
      */
-    const DATETIME_FORMAT = "c";
+    const DATETIME_FORMAT = 'c';
 
     /**
      * Overrides the default batch mode to new lines for compatibility with the Logz.io bulk API.
@@ -37,17 +37,17 @@ class LogzIoFormatter extends JsonFormatter
      */
     public function format(array $record): string
     {
-        if (isset($record[ "datetime" ]) && ($record[ "datetime" ] instanceof \DateTimeInterface)) {
-            $record[ "@timestamp" ] = $record[ "datetime" ]->format(self::DATETIME_FORMAT);
-            unset($record[ "datetime" ]);
+        if (isset($record['datetime']) && ($record['datetime'] instanceof \DateTimeInterface)) {
+            $record['@timestamp'] = $record['datetime']->format(self::DATETIME_FORMAT);
+            unset($record['datetime']);
         }
 
         // Logz.io does not allow [null] or [""] as context/extra.
-        if(isset($record['context'])){
+        if (isset($record['context'])){
             $record['context'] = array_filter((array)$record['context']);
         }
 
-        if(isset($record['extra'])){
+        if (isset($record['extra'])){
             $record['extra'] = array_filter((array)$record['extra']);
         }
 
