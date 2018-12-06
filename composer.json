@@ -33,8 +33,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Inpsyde\\LogzIoMonolog\\": "src/",
-      "Inpsyde\\LogzIoMonolog\\Tests\\Unit\\": "tests/phpunit/"
+      "Inpsyde\\LogzIoMonolog\\Tests\\": "tests/"
     }
   }
 }

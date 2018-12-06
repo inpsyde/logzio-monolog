@@ -13,6 +13,6 @@ if ( ! defined( 'PHPUNIT_COMPOSER_INSTALL' ) ) {
 	define( 'PHPUNIT_COMPOSER_INSTALL', $vendor . 'autoload.php' );
 }
 
-require_once $vendor . 'autoload.php';
+require_once $vendor.'autoload.php';
 
 unset( $vendor );
