@@ -19,10 +19,10 @@
   "require": {
     "php": "^7.0",
     "ext-curl": "*",
-    "ext-json": "*",
     "monolog/monolog": "^1.23"
   },
   "require-dev": {
+    "ext-json": "*",    
     "phpunit/phpunit": "^6.3",
     "inpsyde/php-coding-standards": "^0.8"
   },
