@@ -52,11 +52,11 @@ final class LogzIoHandler extends AbstractProcessingHandler
             ? 'https://listener.logz.io:8071/'
             : 'http://listener.logz.io:8070/';
         $this->endpoint .= '?'.http_build_query(
-                [
-                    'token' => $this->token,
-                    'type' => $this->type,
-                ]
-            );
+            [
+                'token' => $this->token,
+                'type' => $this->type,
+            ]
+        );
 
         parent::__construct($level, $bubble);
     }
