@@ -69,6 +69,7 @@ final class LogzIoHandler extends AbstractProcessingHandler
     protected function send($data)
     {
         $handle = curl_init();
+
         curl_setopt($handle, CURLOPT_URL, $this->endpoint);
         curl_setopt($handle, CURLOPT_POST, true);
         curl_setopt($handle, CURLOPT_POSTFIELDS, $data);
