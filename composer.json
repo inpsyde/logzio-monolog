@@ -17,14 +17,14 @@
     }
   ],
   "require": {
-    "php": ">=7.0",
-    "monolog/monolog": "^1.23",
-    "ext-curl": "*"
+    "php": "^7.0",
+    "ext-curl": "*",
+    "monolog/monolog": "^1.23"
   },
   "require-dev": {
-    "php": ">=7",
-    "phpunit/phpunit": "6.3.*",
-    "inpsyde/php-coding-standards": "^0.8"
+    "ext-json": "*",    
+    "phpunit/phpunit": "^6.3",
+    "inpsyde/php-coding-standards": "^0.13"
   },
   "autoload": {
     "psr-4": {
@@ -33,8 +33,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Inpsyde\\LogzIoMonolog\\": "src/",
-      "Inpsyde\\LogzIoMonolog\\Tests\\Unit\\": "tests/phpunit/"
+      "Inpsyde\\LogzIoMonolog\\Tests\\": "tests/"
     }
   }
 }

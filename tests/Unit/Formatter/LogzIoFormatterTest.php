@@ -9,7 +9,6 @@ use PHPUnit\Framework\TestCase;
 
 class LogzIoFormatterTest extends TestCase
 {
-
     public function testConstruct()
     {
         $formatter = new LogzIoFormatter();
@@ -24,10 +23,9 @@ class LogzIoFormatterTest extends TestCase
         $record            = $this->getRecord();
         $formatted_decoded = json_decode($formatter->format($record), true);
 
-        static::assertArrayNotHasKey("datetime", $formatted_decoded);
-        static::assertArrayHasKey("@timestamp", $formatted_decoded);
+        static::assertArrayNotHasKey('datetime', $formatted_decoded);
+        static::assertArrayHasKey('@timestamp', $formatted_decoded);
     }
-
 
     /**
      * @return array Record
