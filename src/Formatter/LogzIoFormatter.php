@@ -11,7 +11,6 @@ use Monolog\Formatter\JsonFormatter;
  */
 class LogzIoFormatter extends JsonFormatter
 {
-
     /**
      * yyyy-MM-dd'T'HH:mm:ss.SSSZ
      */

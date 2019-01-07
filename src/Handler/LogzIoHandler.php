@@ -16,7 +16,6 @@ use Monolog\Logger;
  */
 final class LogzIoHandler extends AbstractProcessingHandler
 {
-
     /**
      * @var string
      */
@@ -69,7 +68,6 @@ final class LogzIoHandler extends AbstractProcessingHandler
 
     protected function send($data)
     {
-
         $headers = ['Content-Type: application/json'];
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->endpoint);
@@ -83,7 +81,6 @@ final class LogzIoHandler extends AbstractProcessingHandler
 
     public function handleBatch(array $records)
     {
-
         $level = $this->level;
         $records = array_filter(
             $records,
@@ -107,7 +104,6 @@ final class LogzIoHandler extends AbstractProcessingHandler
     // phpcs:disable InpsydeCodingStandard.CodeQuality.NoAccessors.NoGetter
     protected function getDefaultFormatter(): FormatterInterface
     {
-
         return new LogzIoFormatter();
     }
 }
