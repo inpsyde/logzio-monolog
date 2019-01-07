@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare( strict_types=1 );
 
 namespace Inpsyde\LogzIoMonolog\Handler;
 
@@ -64,8 +64,7 @@ final class LogzIoHandler extends AbstractProcessingHandler
 
     protected function write(array $record)
     {
-
-        $this->send($record["formatted"]);
+        $this->send($record[ 'formatted' ]);
     }
 
     protected function send($data)
