@@ -42,7 +42,7 @@ final class LogzIoHandler extends AbstractProcessingHandler
         string $token,
         string $type = 'http-bulk',
         bool $ssl = true,
-        $level = Logger::DEBUG,
+        int $level = Logger::DEBUG,
         bool $bubble = true
     ) {
 
