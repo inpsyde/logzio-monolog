@@ -66,6 +66,7 @@ final class LogzIoHandler extends AbstractProcessingHandler
         $this->send($record[ 'formatted' ]);
     }
 
+    // phpcs:disable Inpsyde.CodeQuality.ArgumentTypeDeclaration.NoArgumentType
     protected function send($data)
     {
         $handle = curl_init();
