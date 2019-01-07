@@ -30,25 +30,25 @@ final class LogzIoHandler extends AbstractProcessingHandler
     private $endpoint;
 
     /**
-     * @param string $token Log token supplied by Logz.io.
-     * @param string $type Host name supplied by Logz.io.
-     * @param bool $useSSL Whether or not SSL encryption should be used.
-     * @param int|string $level The minimum logging level to trigger this handler.
-     * @param bool $bubble Whether or not messages that are handled should bubble up the stack.
+     * @param string     $token  Log token supplied by Logz.io.
+     * @param string     $type   Host name supplied by Logz.io.
+     * @param bool       $ssl    Whether or not SSL encryption should be used.
+     * @param int|string $level  The minimum logging level to trigger this handler.
+     * @param bool       $bubble Whether or not messages that are handled should bubble up the stack.
      *
      * @throws \LogicException If curl extension is not available.
      */
     public function __construct(
         string $token,
         string $type = 'http-bulk',
-        bool $useSSL = true,
+        bool $ssl = true,
         $level = Logger::DEBUG,
         bool $bubble = true
     ) {
 
         $this->token = $token;
         $this->type = $type;
-        $this->endpoint = $useSSL
+        $this->endpoint = $ssl
             ? 'https://listener.logz.io:8071/'
             : 'http://listener.logz.io:8070/';
         $this->endpoint .= '?'.http_build_query(
