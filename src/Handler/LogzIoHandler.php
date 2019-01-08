@@ -31,7 +31,7 @@ final class LogzIoHandler extends AbstractProcessingHandler
 
     /**
      * @param string     $token  Log token supplied by Logz.io.
-     * @param string     $type   Host name supplied by Logz.io.
+     * @param string     $type   Your log type - it helps classify the logs you send.
      * @param bool       $ssl    Whether or not SSL encryption should be used.
      * @param int|string $level  The minimum logging level to trigger this handler.
      * @param bool       $bubble Whether or not messages that are handled should bubble up the stack.
