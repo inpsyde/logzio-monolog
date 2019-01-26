@@ -30,12 +30,12 @@ final class LogzIoHandler extends AbstractProcessingHandler
     private $endpoint;
 
     /**
-     * @param string     $token        Log token supplied by Logz.io.
-     * @param string     $type         Your log type - it helps classify the logs you send.
-     * @param bool       $ssl          Whether or not SSL encryption should be used.
-     * @param int|string $level        The minimum logging level to trigger this handler.
-     * @param bool       $bubble       Whether or not messages that are handled should bubble up the stack.
-     * @param string     $listenerName One of existing listeners, e.g. 'listener' or 'listener-eu'
+     * @param string     $token    Log token supplied by Logz.io.
+     * @param string     $type     Your log type - it helps classify the logs you send.
+     * @param bool       $ssl      Whether or not SSL encryption should be used.
+     * @param int|string $level    The minimum logging level to trigger this handler.
+     * @param bool       $bubble   Whether or not messages that are handled should bubble up the stack.
+     * @param string     $listener One of existing listeners, e.g. 'listener' or 'listener-eu'
      *
      * @throws \LogicException If curl extension is not available.
      */
@@ -45,14 +45,14 @@ final class LogzIoHandler extends AbstractProcessingHandler
         bool $ssl = true,
         int $level = Logger::DEBUG,
         bool $bubble = true,
-        string $listenerName = 'listener'
+        string $listener = 'listener'
     ) {
 
         $this->token = $token;
         $this->type = $type;
         $this->endpoint = $ssl
-            ? 'https://' . $listenerName . '.logz.io:8071/'
-            : 'http://' . $listenerName . '.logz.io:8070/';
+            ? 'https://' . $listener . '.logz.io:8071/'
+            : 'http://' . $listener . '.logz.io:8070/';
         $this->endpoint .= '?'.http_build_query(
             [
                 'token' => $this->token,
@@ -65,7 +65,7 @@ final class LogzIoHandler extends AbstractProcessingHandler
 
     protected function write(array $record)
     {
-        $this->send($record[ 'formatted' ]);
+        $this->send($record['formatted']);
     }
 
     // phpcs:disable Inpsyde.CodeQuality.ArgumentTypeDeclaration.NoArgumentType
