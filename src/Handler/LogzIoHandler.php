@@ -16,6 +16,9 @@ use Monolog\Logger;
  */
 final class LogzIoHandler extends AbstractProcessingHandler
 {
+    const HOST_EU = 'listener-eu.logz.io';
+    const HOST_US = 'listener.logz.io';
+
     /**
      * @var string
      */
@@ -35,6 +38,7 @@ final class LogzIoHandler extends AbstractProcessingHandler
      * @param bool       $ssl    Whether or not SSL encryption should be used.
      * @param int|string $level  The minimum logging level to trigger this handler.
      * @param bool       $bubble Whether or not messages that are handled should bubble up the stack.
+     * @param string     $host   One of existing listener hosts, by default 'listener.logz.io'
      *
      * @throws \LogicException If curl extension is not available.
      */
@@ -43,14 +47,13 @@ final class LogzIoHandler extends AbstractProcessingHandler
         string $type = 'http-bulk',
         bool $ssl = true,
         int $level = Logger::DEBUG,
-        bool $bubble = true
+        bool $bubble = true,
+        string $host = self::HOST_US
     ) {
 
         $this->token = $token;
         $this->type = $type;
-        $this->endpoint = $ssl
-            ? 'https://listener.logz.io:8071/'
-            : 'http://listener.logz.io:8070/';
+        $this->endpoint = $ssl ? 'https://' . $host . ':8071/' : 'http://' . $host . ':8070/';
         $this->endpoint .= '?'.http_build_query(
             [
                 'token' => $this->token,
@@ -63,7 +66,7 @@ final class LogzIoHandler extends AbstractProcessingHandler
 
     protected function write(array $record)
     {
-        $this->send($record[ 'formatted' ]);
+        $this->send($record['formatted']);
     }
 
     // phpcs:disable Inpsyde.CodeQuality.ArgumentTypeDeclaration.NoArgumentType
