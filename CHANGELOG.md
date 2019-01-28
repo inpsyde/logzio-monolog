@@ -1,7 +1,7 @@
 # Changelog
 
-## Unreleased
-
+## 0.4
+* Implement support to ship logs to listener-eu #8
 
 ## 0.3
 * Travis PHP 7.3 #7
