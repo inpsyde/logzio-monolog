@@ -17,9 +17,9 @@
     }
   ],
   "require": {
-    "php": "^7.0",
+    "php": "^7.1",
     "ext-curl": "*",
-    "monolog/monolog": "^1.23"
+    "monolog/monolog": "^1.23|^2.0"
   },
   "require-dev": {
     "ext-json": "*",    
