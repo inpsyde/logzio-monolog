@@ -23,7 +23,7 @@
   },
   "require-dev": {
     "ext-json": "*",    
-    "phpunit/phpunit": "^6.3",
+    "phpunit/phpunit": "^8",
     "inpsyde/php-coding-standards": "^0.13"
   },
   "autoload": {
