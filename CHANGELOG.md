@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0
+* Support of Monolog 2.
+
 ## 0.4
 * Implement support to ship logs to listener-eu #8
 
