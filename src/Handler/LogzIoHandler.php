@@ -16,8 +16,8 @@ use Monolog\Logger;
  */
 final class LogzIoHandler extends AbstractProcessingHandler
 {
-    const HOST_EU = 'listener-eu.logz.io';
-    const HOST_US = 'listener.logz.io';
+    public const HOST_EU = 'listener-eu.logz.io';
+    public const HOST_US = 'listener.logz.io';
 
     /**
      * @var string
@@ -64,13 +64,13 @@ final class LogzIoHandler extends AbstractProcessingHandler
         parent::__construct($level, $bubble);
     }
 
-    protected function write(array $record)
+    protected function write(array $record): void
     {
         $this->send($record['formatted']);
     }
 
     // phpcs:disable Inpsyde.CodeQuality.ArgumentTypeDeclaration.NoArgumentType
-    protected function send($data)
+    protected function send($data): void
     {
         $handle = curl_init();
 
@@ -83,7 +83,7 @@ final class LogzIoHandler extends AbstractProcessingHandler
         Util::execute($handle);
     }
 
-    public function handleBatch(array $records)
+    public function handleBatch(array $records): void
     {
         $level = $this->level;
         $records = array_filter(
