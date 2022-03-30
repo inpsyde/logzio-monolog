@@ -18,7 +18,7 @@ Monolog 1 and Monolog 2 will be supported in different versions:
 | >= 2.0 | 1.x |
 
 * Monolog 1.x will be supported in this package in all versions of 0.x
-* Monolog 2.x will be 
+* Monolog 2.x will be supported in this package in all versions of 1.x
 
 ## Installation
 
