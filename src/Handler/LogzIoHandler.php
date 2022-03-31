@@ -50,7 +50,6 @@ final class LogzIoHandler extends AbstractProcessingHandler
         bool $bubble = true,
         string $host = self::HOST_US
     ) {
-
         $this->token = $token;
         $this->type = $type;
         $this->endpoint = $ssl ? 'https://' . $host . ':8071/' : 'http://' . $host . ':8070/';
@@ -80,7 +79,11 @@ final class LogzIoHandler extends AbstractProcessingHandler
         curl_setopt($handle, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
         curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
 
-        Util::execute($handle);
+        $result = Util::execute($handle);
+        
+        if (is_string($result)) {
+            throw new \RuntimeException($result);
+        }
     }
 
     public function handleBatch(array $records): void
