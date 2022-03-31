@@ -81,7 +81,7 @@ final class LogzIoHandler extends AbstractProcessingHandler
 
         $result = Util::execute($handle);
         
-        if (is_string($result)) {
+        if (is_string($result) && trim($result) !== '') {
             throw new \RuntimeException($result);
         }
     }
