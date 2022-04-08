@@ -11,10 +11,7 @@ use Monolog\Formatter\JsonFormatter;
  */
 class LogzIoFormatter extends JsonFormatter
 {
-    /**
-     * yyyy-MM-dd'T'HH:mm:ss.SSSZ
-     */
-    const DATETIME_FORMAT = 'c';
+    const DATETIME_FORMAT = \DateTimeInterface::RFC3339_EXTENDED;
 
     /**
      * Overrides the default batch mode to new lines for compatibility with the Logz.io bulk API.
