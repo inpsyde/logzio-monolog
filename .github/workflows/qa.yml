@@ -3,14 +3,17 @@ on:
   workflow_dispatch:
   pull_request:
     paths:
+      - 'composer.json'
       - '**.php'
   push:
     paths:
+      - 'composer.json'
       - '**.php'
 jobs:
   static-code-analysis-backend:
     uses: inpsyde/reusable-workflows/.github/workflows/coding-standards-php.yml@main
   php-unit-tests:
+    needs: static-code-analysis-backend
     uses: inpsyde/reusable-workflows/.github/workflows/tests-unit-php.yml@main
     with:
       PHP_MATRIX: >-

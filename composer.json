@@ -1,39 +1,41 @@
 {
-  "name": "inpsyde/logzio-monolog",
-  "description": "Logz.io integration for Monolog",
-  "keywords": [
-    "log",
-    "logging",
-    "monolog"
-  ],
-  "type": "library",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Christian Brückner",
-      "email": "chris@chrico.info",
-      "homepage": "https://www.chrico.info",
-      "role": "Developer"
+    "name": "inpsyde/logzio-monolog",
+    "description": "Logz.io integration for Monolog",
+    "keywords": [
+        "log",
+        "logging",
+        "monolog"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "authors": [
+        {
+            "name": "Christian Brückner",
+            "email": "chris@chrico.info",
+            "homepage": "https://www.chrico.info",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "ext-curl": "*",
+        "monolog/monolog": "^2.0"
+    },
+    "require-dev": {
+        "ext-json": "*",
+        "phpunit/phpunit": "^8",
+        "inpsyde/php-coding-standards": "^1.0@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Inpsyde\\LogzIoMonolog\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Inpsyde\\LogzIoMonolog\\Tests\\": "tests/"
+        }
     }
-  ],
-  "require": {
-    "php": ">=7.2",
-    "ext-curl": "*",
-    "monolog/monolog": "^2.0"
-  },
-  "require-dev": {
-    "ext-json": "*",    
-    "phpunit/phpunit": "^8",
-    "inpsyde/php-coding-standards": "^0.13"
-  },
-  "autoload": {
-    "psr-4": {
-      "Inpsyde\\LogzIoMonolog\\": "src/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Inpsyde\\LogzIoMonolog\\Tests\\": "tests/"
-    }
-  }
 }
