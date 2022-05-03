@@ -1,4 +1,6 @@
-<?php declare( strict_types=1 );
+<?php
+
+declare(strict_types=1);
 
 namespace Inpsyde\LogzIoMonolog\Handler;
 
@@ -23,22 +25,24 @@ final class LogzIoHandler extends AbstractProcessingHandler
      * @var string
      */
     private $token;
+
     /**
      * @var string
      */
     private $type;
+
     /**
      * @var string
      */
     private $endpoint;
 
     /**
-     * @param string     $token  Log token supplied by Logz.io.
-     * @param string     $type   Your log type - it helps classify the logs you send.
-     * @param bool       $ssl    Whether or not SSL encryption should be used.
-     * @param int|string $level  The minimum logging level to trigger this handler.
-     * @param bool       $bubble Whether or not messages that are handled should bubble up the stack.
-     * @param string     $host   One of existing listener hosts, by default 'listener.logz.io'
+     * @param string $token Log token supplied by Logz.io.
+     * @param string $type Your log type - it helps classify the logs you send.
+     * @param bool $ssl Whether or not SSL encryption should be used.
+     * @param int|string $level The minimum logging level to trigger this handler.
+     * @param bool $bubble Whether or not messages that are handled should bubble up the stack.
+     * @param string $host One of existing listener hosts, by default 'listener.logz.io'
      *
      * @throws \LogicException If curl extension is not available.
      */
@@ -53,13 +57,16 @@ final class LogzIoHandler extends AbstractProcessingHandler
 
         $this->token = $token;
         $this->type = $type;
-        $this->endpoint = $ssl ? 'https://' . $host . ':8071/' : 'http://' . $host . ':8070/';
-        $this->endpoint .= '?'.http_build_query(
-            [
-                'token' => $this->token,
-                'type' => $this->type,
-            ]
-        );
+
+        $queryArgs = [
+            'token' => $this->token,
+            'type' => $this->type,
+        ];
+
+        $this->endpoint = $ssl
+            ? 'https://' . $host . ':8071/'
+            : 'http://' . $host . ':8070/';
+        $this->endpoint .= '?' . http_build_query($queryArgs);
 
         parent::__construct($level, $bubble);
     }
@@ -88,8 +95,7 @@ final class LogzIoHandler extends AbstractProcessingHandler
         $level = $this->level;
         $records = array_filter(
             $records,
-            function (array $record) use ($level): bool {
-
+            static function (array $record) use ($level): bool {
                 return ($record['level'] >= $level);
             }
         );
@@ -104,8 +110,8 @@ final class LogzIoHandler extends AbstractProcessingHandler
 
     /**
      * {@inheritdoc}
+     * phpcs:disable
      */
-    // phpcs:disable InpsydeCodingStandard.CodeQuality.NoAccessors.NoGetter
     protected function getDefaultFormatter(): FormatterInterface
     {
         return new LogzIoFormatter();

@@ -37,5 +37,10 @@
         "psr-4": {
             "Inpsyde\\LogzIoMonolog\\Tests\\": "tests/"
         }
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     }
 }

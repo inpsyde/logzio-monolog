@@ -1,4 +1,6 @@
-<?php declare( strict_types=1 );
+<?php
+
+declare(strict_types=1);
 
 namespace Inpsyde\LogzIoMonolog\Formatter;
 
@@ -14,12 +16,12 @@ class LogzIoFormatter extends JsonFormatter
     /**
      * yyyy-MM-dd'T'HH:mm:ss.SSSZ
      */
-    const DATETIME_FORMAT = 'c';
+    public const DATETIME_FORMAT = 'c';
 
     /**
      * Overrides the default batch mode to new lines for compatibility with the Logz.io bulk API.
      *
-     * @param int  $batchMode
+     * @param int $batchMode
      * @param bool $appendNewline
      */
     public function __construct(int $batchMode = self::BATCH_MODE_NEWLINES, bool $appendNewline = true)
@@ -32,25 +34,25 @@ class LogzIoFormatter extends JsonFormatter
      *
      * @param array $record
      *
-     * @link https://support.logz.io/hc/en-us/articles/210206885
+     * @return string
      * @see \Monolog\Formatter\JsonFormatter::format()
      *
-     * @return string
+     * @link https://support.logz.io/hc/en-us/articles/210206885
      */
     public function format(array $record): string
     {
-        if (isset($record['datetime']) && ( $record['datetime'] instanceof \DateTimeInterface )) {
+        if (isset($record['datetime']) && ($record['datetime'] instanceof \DateTimeInterface)) {
             $record['@timestamp'] = $record['datetime']->format(self::DATETIME_FORMAT);
             unset($record['datetime']);
         }
 
         // Logz.io does not allow [null] or [""] as context/extra.
         if (isset($record['context'])) {
-            $record['context'] = array_filter((array)$record['context']);
+            $record['context'] = array_filter((array) $record['context']);
         }
 
         if (isset($record['extra'])) {
-            $record['extra'] = array_filter((array)$record['extra']);
+            $record['extra'] = array_filter((array) $record['extra']);
         }
 
         return parent::format($record);
