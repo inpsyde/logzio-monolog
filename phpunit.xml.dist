@@ -11,21 +11,20 @@
 	convertWarningsToExceptions="true"
 	processIsolation="false"
 	stopOnFailure="false">
-	<testsuites>
-		<testsuite name="Unit">
-			<directory suffix="Test.php">tests/phpunit/Unit</directory>
-		</testsuite>
-	</testsuites>
-	<filter>
-		<whitelist processUncoveredFilesFromWhitelist="true">
-			<directory suffix=".php">src</directory>
-			<exclude>
-				<directory>tests</directory>
-				<directory>vendor</directory>
-			</exclude>
-		</whitelist>
-	</filter>
-	<logging>
-		<log type="coverage-html" target="tmp"/>
-	</logging>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src</directory>
+            <exclude>
+                <directory>./vendor</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+    <testsuites>
+        <testsuite name="Unit">
+            <directory suffix="Test.php">./tests/Unit/</directory>
+        </testsuite>
+    </testsuites>
+    <logging>
+        <log type="coverage-html" target="tmp"/>
+    </logging>
 </phpunit>

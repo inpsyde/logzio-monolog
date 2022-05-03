@@ -9,6 +9,9 @@ use PHPUnit\Framework\TestCase;
 
 class LogzIoFormatterTest extends TestCase
 {
+    /**
+     * @test
+     */
     public function testConstruct()
     {
         $formatter = new LogzIoFormatter();
@@ -17,6 +20,9 @@ class LogzIoFormatterTest extends TestCase
         static::assertEquals(JsonFormatter::BATCH_MODE_JSON, $formatter->getBatchMode());
     }
 
+    /**
+     * @test
+     */
     public function testFormat()
     {
         $formatter         = new LogzIoFormatter();
