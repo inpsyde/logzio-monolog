@@ -1,4 +1,6 @@
-<?php declare( strict_types=1 );
+<?php
+
+declare(strict_types=1);
 
 namespace Inpsyde\LogzIoMonolog\Handler;
 
@@ -54,7 +56,7 @@ final class LogzIoHandler extends AbstractProcessingHandler
         $this->token = $token;
         $this->type = $type;
         $this->endpoint = $ssl ? 'https://' . $host . ':8071/' : 'http://' . $host . ':8070/';
-        $this->endpoint .= '?'.http_build_query(
+        $this->endpoint .= '?' . http_build_query(
             [
                 'token' => $this->token,
                 'type' => $this->type,
@@ -88,7 +90,7 @@ final class LogzIoHandler extends AbstractProcessingHandler
         $level = $this->level;
         $records = array_filter(
             $records,
-            function (array $record) use ($level): bool {
+            static function (array $record) use ($level): bool {
 
                 return ($record['level'] >= $level);
             }

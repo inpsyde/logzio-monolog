@@ -1,5 +1,9 @@
 <?xml version="1.0"?>
 <ruleset name="Inpsyde Logz.io Monolog integration">
     <file>./src</file>
-    <rule ref="Inpsyde"/>
+    <rule ref="Inpsyde">
+        <exclude name="Inpsyde.CodeQuality.ConstantVisibility.NotFound" />
+        <exclude name="Inpsyde.CodeQuality.NoAccessors.NoGetter" />
+        <exclude name="Inpsyde.CodeQuality.LineLength.TooLong" />
+    </rule>
 </ruleset>
