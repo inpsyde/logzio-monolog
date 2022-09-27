@@ -24,7 +24,7 @@
   "require-dev": {
     "ext-json": "*",    
     "phpunit/phpunit": "^6.3",
-    "inpsyde/php-coding-standards": "^0.13"
+    "inpsyde/php-coding-standards": "^1"
   },
   "autoload": {
     "psr-4": {
@@ -34,6 +34,11 @@
   "autoload-dev": {
     "psr-4": {
       "Inpsyde\\LogzIoMonolog\\Tests\\": "tests/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
     }
   }
 }
