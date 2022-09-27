@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.4.1
+* Added compatibility for PHP >= 8
+
 ## 0.4
 * Implement support to ship logs to listener-eu #8
 
