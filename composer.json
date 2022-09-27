@@ -17,13 +17,13 @@
     }
   ],
   "require": {
-    "php": "^7.0",
+    "php": ">=7.0",
     "ext-curl": "*",
     "monolog/monolog": "^1.23"
   },
   "require-dev": {
-    "ext-json": "*",    
-    "phpunit/phpunit": "^6.3",
+    "ext-json": "*",
+    "phpunit/phpunit": "^6.3|^8",
     "inpsyde/php-coding-standards": "^1"
   },
   "autoload": {
