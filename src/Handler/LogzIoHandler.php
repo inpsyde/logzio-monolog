@@ -21,9 +21,11 @@ use Monolog\LogRecord;
  */
 final class LogzIoHandler extends AbstractProcessingHandler
 {
+    private string $endpoint;
+
     /**
      * @param string $token Log token supplied by Logz.io.
-     * @param Type $type Your log type - it helps classify the logs you send.
+     * @param string $type Your log type - it helps classify the logs you send.
      * @param bool $ssl Whether SSL encryption should be used.
      * @param Level $level The minimum logging level to trigger this handler.
      * @param bool $bubble Whether messages that are handled should bubble up the stack.
@@ -33,7 +35,7 @@ final class LogzIoHandler extends AbstractProcessingHandler
      */
     public function __construct(
         protected readonly string $token,
-        Type $type = Type::HttpBulk,
+        string $type = 'http-bulk',
         bool $ssl = true,
         Level $level = Level::Debug,
         bool $bubble = true,
@@ -41,7 +43,7 @@ final class LogzIoHandler extends AbstractProcessingHandler
     ) {
         $queryArgs = [
             'token' => $this->token,
-            'type' => $type->value,
+            'type' => $type,
         ];
 
         $this->endpoint = $ssl
