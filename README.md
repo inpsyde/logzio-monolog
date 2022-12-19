@@ -10,12 +10,13 @@ This package allows you to integrate [Logz.io](https://logz.io) into Monolog.
 
 ## Monolog support
 
-Monolog 1 and Monolog 2 will be supported in different versions:
+Monolog 1, 2 and 3 will be supported in different versions:
 
 | Monolog Version | Logzio-Monolog Branch |
 |---|---|
 | 1.0 - 1.25.2 | 0.x |
 | >= 2.0 | 1.x |
+| >= 3.0 | 2.x |
 
 * Monolog 1.x will be supported in this package in all versions of 0.x
 * Monolog 2.x will be supported in this package in all versions of 1.x
