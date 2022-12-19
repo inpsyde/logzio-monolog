@@ -4,11 +4,14 @@ declare(strict_types=1);
 
 namespace Inpsyde\LogzIoMonolog\Handler;
 
+use Inpsyde\LogzIoMonolog\Enum\Host;
+use Inpsyde\LogzIoMonolog\Enum\Type;
 use Inpsyde\LogzIoMonolog\Formatter\LogzIoFormatter;
 use Monolog\Formatter\FormatterInterface;
 use Monolog\Handler\AbstractProcessingHandler;
 use Monolog\Handler\Curl\Util;
-use Monolog\Logger;
+use Monolog\Level;
+use Monolog\LogRecord;
 
 /**
  * @author Christian Brückner <chris@chrico.info>
@@ -18,60 +21,40 @@ use Monolog\Logger;
  */
 final class LogzIoHandler extends AbstractProcessingHandler
 {
-    public const HOST_EU = 'listener-eu.logz.io';
-    public const HOST_US = 'listener.logz.io';
-
-    /**
-     * @var string
-     */
-    private $token;
-
-    /**
-     * @var string
-     */
-    private $type;
-
-    /**
-     * @var string
-     */
-    private $endpoint;
+    private string $endpoint;
 
     /**
      * @param string $token Log token supplied by Logz.io.
      * @param string $type Your log type - it helps classify the logs you send.
-     * @param bool $ssl Whether or not SSL encryption should be used.
-     * @param int|string $level The minimum logging level to trigger this handler.
-     * @param bool $bubble Whether or not messages that are handled should bubble up the stack.
-     * @param string $host One of existing listener hosts, by default 'listener.logz.io'
+     * @param bool $ssl Whether SSL encryption should be used.
+     * @param Level $level The minimum logging level to trigger this handler.
+     * @param bool $bubble Whether messages that are handled should bubble up the stack.
+     * @param Host $host One of existing listener hosts, by default 'listener.logz.io'
      *
      * @throws \LogicException If curl extension is not available.
      */
     public function __construct(
-        string $token,
+        protected readonly string $token,
         string $type = 'http-bulk',
         bool $ssl = true,
-        int $level = Logger::DEBUG,
+        Level $level = Level::Debug,
         bool $bubble = true,
-        string $host = self::HOST_US
+        Host $host = Host::UsEast1
     ) {
-
-        $this->token = $token;
-        $this->type = $type;
-
         $queryArgs = [
             'token' => $this->token,
-            'type' => $this->type,
+            'type' => $type,
         ];
 
         $this->endpoint = $ssl
-            ? 'https://' . $host . ':8071/'
-            : 'http://' . $host . ':8070/';
+            ? 'https://' . $host->value . ':8071/'
+            : 'http://' . $host->value . ':8070/';
         $this->endpoint .= '?' . http_build_query($queryArgs);
 
         parent::__construct($level, $bubble);
     }
 
-    protected function write(array $record): void
+    protected function write(LogRecord $record): void
     {
         $this->send($record['formatted']);
     }
@@ -95,8 +78,8 @@ final class LogzIoHandler extends AbstractProcessingHandler
         $level = $this->level;
         $records = array_filter(
             $records,
-            static function (array $record) use ($level): bool {
-                return ($record['level'] >= $level);
+            static function (LogRecord $record) use ($level): bool {
+                return ($record->level >= $level);
             }
         );
 

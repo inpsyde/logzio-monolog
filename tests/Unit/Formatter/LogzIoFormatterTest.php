@@ -4,7 +4,8 @@ namespace Inpsyde\LogzIoMonolog\Tests\Unit\Formatter;
 
 use Inpsyde\LogzIoMonolog\Formatter\LogzIoFormatter;
 use Monolog\Formatter\JsonFormatter;
-use Monolog\Logger;
+use Monolog\Level;
+use Monolog\LogRecord;
 use PHPUnit\Framework\TestCase;
 
 class LogzIoFormatterTest extends TestCase
@@ -27,25 +28,25 @@ class LogzIoFormatterTest extends TestCase
     {
         $formatter         = new LogzIoFormatter();
         $record            = $this->getRecord();
-        $formatted_decoded = json_decode($formatter->format($record), true);
+        $normalizedRecord  = $formatter->normalizeRecord($record);
 
-        static::assertArrayNotHasKey('datetime', $formatted_decoded);
-        static::assertArrayHasKey('@timestamp', $formatted_decoded);
+        static::assertArrayNotHasKey('datetime', $normalizedRecord);
+        static::assertArrayHasKey('@timestamp', $normalizedRecord);
     }
 
     /**
-     * @return array Record
+     * @return LogRecord
      */
-    protected function getRecord($level = Logger::WARNING, $message = 'test', $context = array())
+    protected function getRecord($level = Level::Warning, $message = 'test', $context = array())
     {
-        return array(
-            'message'    => $message,
-            'context'    => $context,
-            'level'      => $level,
-            'level_name' => Logger::getLevelName($level),
-            'channel'    => 'test',
-            'datetime'   => \DateTime::createFromFormat('U.u', sprintf('%.6F', microtime(true))),
-            'extra'      => array(),
+        return new LogRecord(
+            \DateTimeImmutable::createFromFormat('U.u', sprintf('%.6F', microtime(true))),
+            'test',
+            $level,
+            $message,
+            $context,
+            [],
+            null
         );
     }
 }

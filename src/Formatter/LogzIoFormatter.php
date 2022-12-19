@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Inpsyde\LogzIoMonolog\Formatter;
 
 use Monolog\Formatter\JsonFormatter;
+use Monolog\LogRecord;
 
 /**
  * Encodes message information into JSON in a format compatible with Logz.io.
@@ -32,29 +33,28 @@ class LogzIoFormatter extends JsonFormatter
     /**
      * Appends the '@timestamp' parameter for Logz.io.
      *
-     * @param array $record
-     *
-     * @return string
      * @see \Monolog\Formatter\JsonFormatter::format()
-     *
-     * @link https://support.logz.io/hc/en-us/articles/210206885
+     * @see https://support.logz.io/hc/en-us/articles/210206885
      */
-    public function format(array $record): string
+    public function normalizeRecord(LogRecord $record): array
     {
-        if (isset($record['datetime']) && ($record['datetime'] instanceof \DateTimeInterface)) {
-            $record['@timestamp'] = $record['datetime']->format(self::DATETIME_FORMAT);
-            unset($record['datetime']);
+        $recordData = parent::normalizeRecord($record);
+
+        if (isset($recordData['datetime'])) {
+            $recordData['@timestamp'] = (new \DateTimeImmutable($recordData['datetime']))->format(self::DATETIME_FORMAT);
+
+            unset($recordData['datetime']);
         }
 
         // Logz.io does not allow [null] or [""] as context/extra.
-        if (isset($record['context'])) {
-            $record['context'] = array_filter((array) $record['context']);
+        if (isset($recordData['context'])) {
+            $recordData['context'] = array_filter((array) $recordData['context']);
         }
 
-        if (isset($record['extra'])) {
-            $record['extra'] = array_filter((array) $record['extra']);
+        if (isset($recordData['extra'])) {
+            $recordData['extra'] = array_filter((array) $recordData['extra']);
         }
 
-        return parent::format($record);
+        return $recordData;
     }
 }
