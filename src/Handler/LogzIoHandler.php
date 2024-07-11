@@ -79,7 +79,7 @@ final class LogzIoHandler extends AbstractProcessingHandler
         $records = array_filter(
             $records,
             static function (LogRecord $record) use ($level): bool {
-                return ($record->level >= $level);
+                return $level->includes($record->level);
             }
         );
 
