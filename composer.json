@@ -12,6 +12,12 @@
     "prefer-stable": true,
     "authors": [
         {
+            "name": "Syde GmbH",
+            "homepage": "https://syde.com/",
+            "email": "hello@syde.com",
+            "role": "Company"
+        },
+        {
             "name": "Christian Brückner",
             "email": "chris@chrico.info",
             "homepage": "https://www.chrico.info",
