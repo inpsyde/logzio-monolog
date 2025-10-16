@@ -69,7 +69,6 @@ final class LogzIoHandler extends AbstractProcessingHandler
         curl_setopt($handle, CURLOPT_POSTFIELDS, $data);
         curl_setopt($handle, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
         curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($handle, CURLOPT_CONNECTTIMEOUT, 2);
         curl_setopt($handle, CURLOPT_TIMEOUT, 5);
 
         Util::execute($handle);
