@@ -41,7 +41,8 @@ class LogzIoFormatter extends JsonFormatter
         $recordData = parent::normalizeRecord($record);
 
         if (isset($recordData['datetime'])) {
-            $recordData['@timestamp'] = (new \DateTimeImmutable($recordData['datetime']))->format(self::DATETIME_FORMAT);
+            $recordData['@timestamp'] = (new \DateTimeImmutable($recordData['datetime']))
+                ->format(self::DATETIME_FORMAT);
 
             unset($recordData['datetime']);
         }
