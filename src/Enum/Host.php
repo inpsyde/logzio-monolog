@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inpsyde\LogzIoMonolog\Enum;
 
 enum Host: string

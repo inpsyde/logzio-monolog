@@ -17,7 +17,7 @@ class LogzIoFormatter extends JsonFormatter
     /**
      * yyyy-MM-dd'T'HH:mm:ss.SSSZ
      */
-    public const DATETIME_FORMAT = 'c';
+    public const DATETIME_FORMAT = 'Y-m-d\TH:i:s.vP';
 
     /**
      * Overrides the default batch mode to new lines for compatibility with the Logz.io bulk API.
@@ -41,7 +41,8 @@ class LogzIoFormatter extends JsonFormatter
         $recordData = parent::normalizeRecord($record);
 
         if (isset($recordData['datetime'])) {
-            $recordData['@timestamp'] = (new \DateTimeImmutable($recordData['datetime']))->format(self::DATETIME_FORMAT);
+            $recordData['@timestamp'] = (new \DateTimeImmutable($recordData['datetime']))
+                ->format(self::DATETIME_FORMAT);
 
             unset($recordData['datetime']);
         }

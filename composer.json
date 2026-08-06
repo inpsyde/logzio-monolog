@@ -31,7 +31,7 @@
     "require-dev": {
         "ext-json": "*",
         "phpunit/phpunit": "^8",
-        "inpsyde/php-coding-standards": "^1.0@dev"
+        "inpsyde/php-coding-standards": "^2.0"
     },
     "autoload": {
         "psr-4": {
