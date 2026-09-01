@@ -41,6 +41,7 @@ final class LogzIoHandler extends AbstractProcessingHandler
         bool $bubble = true,
         Host $host = Host::UsEast1
     ) {
+
         $queryArgs = [
             'token' => $this->token,
             'type' => $type,
@@ -83,9 +84,8 @@ final class LogzIoHandler extends AbstractProcessingHandler
                 if (method_exists($level, 'includes')) {
                     return $level->includes($record->level);
                 }
-                else {
-                    return ($record->level >= $level);
-                }
+
+                return ($record->level >= $level);
             }
         );
 

@@ -12,9 +12,14 @@
     "prefer-stable": true,
     "authors": [
         {
-            "name": "Christian Brückner",
-            "email": "chris@chrico.info",
-            "homepage": "https://www.chrico.info",
+            "name": "Syde GmbH",
+            "homepage": "https://syde.com/",
+            "email": "hello@syde.com",
+            "role": "Company"
+        },
+        {
+            "name": "Christian Leucht",
+            "email": "c.leucht@syde.com",
             "role": "Developer"
         }
     ],
@@ -26,7 +31,7 @@
     "require-dev": {
         "ext-json": "*",
         "phpunit/phpunit": "^8",
-        "inpsyde/php-coding-standards": "^1.0@dev"
+        "inpsyde/php-coding-standards": "^2.0"
     },
     "autoload": {
         "psr-4": {
